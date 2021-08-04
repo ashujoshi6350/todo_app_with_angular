@@ -1,0 +1,20 @@
+<div class="my-3">
+	<app-add-todo (todoAdd)=addItem($event)></app-add-todo>
+	<hr class="divider"/>
+	<h2 class="text-center">My To Do List</h2>
+	<div *ngIf="!todoList.length; else elseBlock" class="text-center">
+		List is empty!! Please add tasks.
+	</div>
+	<ng-template #elseBlock>
+		<div class="container my-3 card" [ngClass]="item.active ? 'card-block' : 'card-block-completed'"
+		*ngFor="let item of todoList; let i = index">
+		  	<div class="card-body">
+		    	<h5 class="card-title" [ngClass]="{'card_title-strike': !item.active}">{{item.title}}</h5>
+		    	<div class="mb-3 form-check">
+				    <input type="checkbox" class="form-check-input" id="cardCheckbox{{i}}" (click)=toggleCheckbox(i)>
+				    <label class="form-check-label" for="cardCheckbox{{i}}">Completed</label>
+				</div>
+		  	</div>
+		</div>
+	</ng-template>
+</div>

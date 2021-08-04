@@ -1,0 +1,9 @@
+<div class="container form-width">
+  <form (ngSubmit)=onSubmit()>
+    <div class="mb-3">
+      <label for="title" class="form-label">Task</label>
+      <input type="text" class="form-control" name="title" [(ngModel)]="title">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="checkButton()">Add</button>
+  </form>
+</div>
